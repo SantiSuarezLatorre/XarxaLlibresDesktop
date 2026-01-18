@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.xarxallibres.desktop.controllers.HomeController"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Barra superior -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: #667eea; -fx-padding: 15;">
+
+            <Label text="📚 XarxaLlibres - Administración"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label fx:id="usuarioLabel"
+                   style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+        </HBox>
+    </top>
+
+    <!-- Contenido principal -->
+    <center>
+        <HBox spacing="0" VBox.vgrow="ALWAYS">
+
+            <!-- PANEL IZQUIERDO: Lista de libros -->
+            <VBox spacing="15" prefWidth="400"
+                  style="-fx-background-color: white; -fx-padding: 20;">
+
+                <VBox.margin>
+                    <Insets top="0" right="2" bottom="0" left="0"/>
+                </VBox.margin>
+
+                <!-- Título y filtro -->
+                <VBox spacing="10">
+                    <Label text="Libros del Centro"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Filtrar por curso:"
+                               style="-fx-font-size: 13px;"/>
+                        <ComboBox fx:id="cursosComboBox"
+                                  prefWidth="250"
+                                  promptText="Selecciona un curso"/>
+                    </HBox>
+
+                    <Separator/>
+                </VBox>
+
+                <!-- Lista de libros con scroll -->
+                <ScrollPane fx:id="librosScrollPane"
+                            fitToWidth="true"
+                            style="-fx-background-color: transparent;"
+                            VBox.vgrow="ALWAYS">
+
+                    <VBox fx:id="librosContainer"
+                          spacing="10"
+                          style="-fx-background-color: transparent;">
+                        <padding>
+                            <Insets top="5" right="5" bottom="5" left="5"/>
+                        </padding>
+                    </VBox>
+
+                </ScrollPane>
+
+            </VBox>
+
+            <!-- PANEL DERECHO: Edición de libro -->
+            <VBox spacing="20" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: white; -fx-padding: 20;">
+
+                <!-- Botón perfil -->
+                <HBox alignment="CENTER_RIGHT">
+                    <Button fx:id="perfilButton"
+                            text="👤 Mi Perfil"
+                            style="-fx-background-color: transparent;
+                                   -fx-text-fill: #667eea;
+                                   -fx-font-size: 14px;
+                                   -fx-cursor: hand;
+                                   -fx-underline: true;"/>
+                </HBox>
+
+                <!-- Título sección -->
+                <VBox spacing="5">
+                    <Label text="Gestión de Libros"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Label text="Selecciona un libro de la izquierda para editarlo o crea uno nuevo"
+                           style="-fx-text-fill: #666; -fx-font-size: 12px;"
+                           wrapText="true"/>
+                    <Separator/>
+                </VBox>
+
+                <!-- Formulario en ScrollPane -->
+                <ScrollPane fitToWidth="true"
+                            style="-fx-background-color: transparent;"
+                            VBox.vgrow="ALWAYS">
+
+                    <GridPane hgap="15" vgap="15">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+
+                        <!-- ISBN -->
+                        <Label text="ISBN *" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="isbnField"
+                                   promptText="978-84-xxxx-xxx-x"
+                                   GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2"/>
+
+                        <!-- Título -->
+                        <Label text="Título *" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="tituloField"
+                                   promptText="Nombre del libro"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2"/>
+
+                        <!-- Editorial -->
+                        <Label text="Editorial *" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="editorialField"
+                                   promptText="Editorial"
+                                   GridPane.rowIndex="2" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2"/>
+
+                        <!-- Autor -->
+                        <Label text="Autor" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="autorField"
+                                   promptText="Nombre del autor"
+                                   GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2"/>
+
+                        <!-- Asignatura -->
+                        <Label text="Asignatura *" GridPane.rowIndex="4" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="asignaturaField"
+                                   promptText="Matemáticas, Lengua, etc."
+                                   GridPane.rowIndex="4" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2"/>
+
+                        <!-- Curso -->
+                        <Label text="Curso *" GridPane.rowIndex="5" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <ComboBox fx:id="cursoLibroComboBox"
+                                  promptText="Selecciona curso"
+                                  prefWidth="300"
+                                  GridPane.rowIndex="5" GridPane.columnIndex="1"
+                                  GridPane.columnSpan="2"/>
+
+                        <!-- Stock Total -->
+                        <Label text="Stock Total" GridPane.rowIndex="6" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <Spinner fx:id="stockTotalSpinner"
+                                 editable="true"
+                                 prefWidth="150"
+                                 GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                        <!-- Stock Disponible -->
+                        <Label text="Stock Disponible" GridPane.rowIndex="7" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <Spinner fx:id="stockDisponibleSpinner"
+                                 editable="true"
+                                 prefWidth="150"
+                                 GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+                        <!-- Precio -->
+                        <Label text="Precio (€)" GridPane.rowIndex="8" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="precioField"
+                                   promptText="25.50"
+                                   prefWidth="150"
+                                   GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+                        <!-- URL Imagen -->
+                        <Label text="URL Imagen" GridPane.rowIndex="9" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="imagenUrlField"
+                                   promptText="https://..."
+                                   GridPane.rowIndex="9" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2"/>
+
+                        <!-- Activo -->
+                        <Label text="Estado" GridPane.rowIndex="10" GridPane.columnIndex="0"
+                               style="-fx-font-weight: bold;"/>
+                        <CheckBox fx:id="activoCheckBox"
+                                  text="Libro activo"
+                                  selected="true"
+                                  GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+                    </GridPane>
+
+                </ScrollPane>
+
+                <!-- Botones de acción -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="nuevoButton"
+                            text="➕ Nuevo Libro"
+                            prefWidth="150"
+                            prefHeight="35"
+                            style="-fx-background-color: #28a745;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                    <Button fx:id="guardarButton"
+                            text="💾 Guardar"
+                            prefWidth="150"
+                            prefHeight="35"
+                            style="-fx-background-color: #667eea;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                    <Button fx:id="eliminarButton"
+                            text="🗑 Desactivar"
+                            prefWidth="150"
+                            prefHeight="35"
+                            disable="true"
+                            style="-fx-background-color: #dc3545;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+                </HBox>
+
+                <Label text="* Campos obligatorios"
+                       style="-fx-text-fill: #999; -fx-font-size: 11px;"/>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

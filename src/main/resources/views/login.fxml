@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.xarxallibres.desktop.controllers.LoginController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-background-color: linear-gradient(to bottom, #667eea 0%, #764ba2 100%);">
+
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <!-- Contenedor central con fondo blanco -->
+    <VBox alignment="CENTER" spacing="25"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 40;">
+
+        <VBox.margin>
+            <Insets top="0" right="0" bottom="0" left="0"/>
+        </VBox.margin>
+
+        <!-- Logo/Título -->
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="📚" style="-fx-font-size: 48px;"/>
+            <Label text="XarxaLlibres" styleClass="title">
+                <font>
+                    <Font name="System Bold" size="28"/>
+                </font>
+            </Label>
+            <Label text="Panel de Administración"
+                   style="-fx-text-fill: #666; -fx-font-size: 14px;"/>
+        </VBox>
+
+        <!-- Separador -->
+        <Separator prefWidth="250"/>
+
+        <!-- Formulario -->
+        <VBox spacing="15" prefWidth="300">
+
+            <!-- Email -->
+            <VBox spacing="5">
+                <Label text="Correo Electrónico"
+                       style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                <TextField fx:id="emailField"
+                           promptText="profesor@colegio.com"
+                           style="-fx-font-size: 14px; -fx-padding: 10;"/>
+            </VBox>
+
+            <!-- Contraseña -->
+            <VBox spacing="5">
+                <Label text="Contraseña"
+                       style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                <PasswordField fx:id="passwordField"
+                               promptText="••••••••"
+                               style="-fx-font-size: 14px; -fx-padding: 10;"/>
+            </VBox>
+
+            <!-- Botón Login -->
+            <Button fx:id="loginButton"
+                    text="Iniciar Sesión"
+                    defaultButton="true"
+                    prefWidth="300"
+                    prefHeight="45"
+                    style="-fx-background-color: #667eea;
+                           -fx-text-fill: white;
+                           -fx-font-size: 15px;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 5;
+                           -fx-cursor: hand;">
+            </Button>
+
+        </VBox>
+
+        <!-- Información -->
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="⚠ Solo profesores y administradores"
+                   style="-fx-text-fill: #999; -fx-font-size: 11px;"/>
+        </VBox>
+
+    </VBox>
+
+</VBox>
